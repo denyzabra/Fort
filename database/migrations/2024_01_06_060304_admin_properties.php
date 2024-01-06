@@ -12,6 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('admin_properties', function (Blueprint $table){
+            $table->id();
+            $table->string('name');
+            $table->string('category');
+            $table->string('description');
+            $table->string('location');
+            $table->integer('size');
+            $table->integer('bedrooms');
+            $table->integer('bathrooms');
+            $table->string('status');
+            $table->integer('price');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+
+        });
     }
 
     /**

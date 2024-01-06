@@ -12,6 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('admin_property_categories_town_houses', function (Blueprint $table){
+            $table->id();
+            $table->string('name');
+            $table->string('type');
+        });
     }
 
     /**

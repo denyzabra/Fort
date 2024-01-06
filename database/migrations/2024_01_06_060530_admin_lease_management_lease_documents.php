@@ -12,6 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('admin_lease_management_lease_documents', function (Blueprint $table){
+            $table->id();
+            $table->foreignId('lease_id'); //referencing leases table
+            $table->string('document_type');
+            $table->string('document_url');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+        });
     }
 
     /**
