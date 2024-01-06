@@ -12,6 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('admin_bookings_client_bookings', function (Blueprint $table){
+            $table->id();
+            $table->foreignId('property_id'); //foreign key referencing the properties table
+            $table->foreignId('tenant_id'); //tenant
+            $table->date('booking_date'); //
+            $table->timestamp('created_at'); //
+            $table->timestamp('updated_at'); //
+        });
     }
 
     /**

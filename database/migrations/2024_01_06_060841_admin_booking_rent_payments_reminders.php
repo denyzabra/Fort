@@ -12,6 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('admin_bookings_rent_payments_reminders', function (Blueprint $table){
+            $table->id();
+            $table->foreignId('tenant_id'); // tenant id
+            $table->date('reminder_date');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+
+        });
     }
 
     /**
