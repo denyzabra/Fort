@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('admin_tasks', function (Blueprint $table){
+        Schema::create('admin_tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('maintenance_request_id'); //referencing the maintenance requests table
-            $table->foreignId('service_provider_id'); //referencing the service provider table
+            $table->foreignId('maintenance_request_id'); // foreign key referencing maintenance_requests table
+            $table->foreignId('service_provider_id'); // foreign key referencing service_providers table
             $table->text('description');
             $table->string('status');
             $table->date('completion_date');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->useCurrent(); // Use current timestamp as default
+            $table->timestamp('updated_at')->useCurrent(); // Use current timestamp as default
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('admin_tasks');
     }
 };

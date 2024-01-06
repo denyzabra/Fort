@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('pro_manager_service_providers', function (Blueprint $table){
+        Schema::create('pro_manager_service_providers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('contact_person');
             $table->integer('phone_number');
             $table->string('email');
             $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable(); // Set the default value to null
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('pro_manager_service_providers');
     }
 };

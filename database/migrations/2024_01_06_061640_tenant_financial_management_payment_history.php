@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('tenant_financial_management_payment_history', function (Blueprint $table){
+        Schema::create('tenant_financial_management_payment_history', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tenant_id');
             $table->foreignId('lease_id');
             $table->date('payment_date');
             $table->integer('amount_paid');
-            $table->string('payment_method');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->enum('payment_method', ['credit_card', 'bank_transfer', 'cash', 'other']);
+            $table->timestamps();
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('tenant_financial_management_payment_history');
     }
 };

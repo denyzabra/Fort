@@ -11,8 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('pro_manager_tenant_management_tenants', function (Blueprint $table){
+        Schema::create('pro_manager_tenant_management_tenants', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
@@ -20,7 +19,7 @@ return new class extends Migration
             $table->integer('phone_number');
             $table->foreignId('lease_id');
             $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable(); // Set the default value to null
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('pro_manager_tenant_management_tenants');
     }
 };

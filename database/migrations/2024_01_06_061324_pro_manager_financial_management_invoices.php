@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('pro_manager_financial_management_invoices', function (Blueprint $table){
+        Schema::create('pro_manager_financial_management_invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id');
-            $table-> foreignId('tenant_id');
+            $table->foreignId('tenant_id');
             $table->integer('amount');
             $table->string('status');
             $table->date('due_date');
             $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable(); // Set the default value to null
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('pro_manager_financial_management_invoices');
     }
 };

@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('admin_document_management_documents', function (Blueprint $table){
+        Schema::create('admin_document_management_documents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('property_id'); //referencing properties table
+            $table->foreignId('property_id'); // referencing properties table
             $table->string('document_type'); //
             $table->string('document_url');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
-
+            $table->timestamp('created_at')->useCurrent(); // Use current timestamp as default
+            $table->timestamp('updated_at')->useCurrent(); // Use current timestamp as default
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('admin_document_management_documents');
     }
 };

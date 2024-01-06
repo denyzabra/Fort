@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('pro_manager_financial_management_reports', function (Blueprint $table){
+        Schema::create('pro_manager_financial_management_reports', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id');
             $table->string('document_type');
             $table->string('document_url');
             $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable(); // Set the default value to null
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('pro_manager_financial_management_reports');
     }
 };

@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('tenant_lease_info_leases', function (Blueprint $table){
+        Schema::create('tenant_lease_info_leases', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id');
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('monthly_rent');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamps(); // This will create 'created_at' and 'updated_at' with current timestamps
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('tenant_lease_info_leases');
     }
 };

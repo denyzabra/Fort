@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('pro_manager_vacancy_management_rental_history', function (Blueprint $table){
+        Schema::create('pro_manager_vacancy_management_rental_history', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id');
             $table->foreignId('tenant_id');
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable(); // Set the default value to null
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('pro_manager_vacancy_management_rental_history');
     }
 };

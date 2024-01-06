@@ -11,8 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('admin_communication_tools_inbox_messages', function (Blueprint $table){
+        Schema::create('admin_communication_tools_inbox_messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sender_id');
             $table->foreignId('recipient_id');
@@ -20,7 +19,7 @@ return new class extends Migration
             $table->text('message');
             $table->string('status');
             $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable(); // Set the default value to null
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('admin_communication_tools_inbox_messages');
     }
 };

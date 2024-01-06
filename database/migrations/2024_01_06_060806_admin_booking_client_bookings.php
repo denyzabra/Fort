@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('admin_bookings_client_bookings', function (Blueprint $table){
+        Schema::create('admin_bookings_client_bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('property_id'); //foreign key referencing the properties table
-            $table->foreignId('tenant_id'); //tenant
+            $table->foreignId('property_id'); // foreign key referencing the properties table
+            $table->foreignId('tenant_id'); // tenant
             $table->date('booking_date'); //
-            $table->timestamp('created_at'); //
-            $table->timestamp('updated_at'); //
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at')->nullable(); // Set the default value to null
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('admin_bookings_client_bookings');
     }
 };

@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('tenant_maintenance_requests', function (Blueprint $table){
+        Schema::create('tenant_maintenance_requests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id');
             $table->foreignId('tenant_id');
             $table->date('request_date');
             $table->text('description');
             $table->string('status');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('tenant_maintenance_requests');
     }
 };

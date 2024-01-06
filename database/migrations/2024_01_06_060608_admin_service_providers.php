@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('admin_service_providers', function (Blueprint $table){
+        Schema::create('admin_service_providers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('contact_person');
-            $table->integer('phone_number');
+            $table->string('phone_number');
             $table->string('email');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->useCurrent(); // Use current timestamp as default
+            $table->timestamp('updated_at')->useCurrent(); // Use current timestamp as default
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('admin_service_providers');
     }
 };

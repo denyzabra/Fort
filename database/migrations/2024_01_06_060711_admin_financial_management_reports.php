@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('admin_financial_management_reports', function (Blueprint $table){
+        Schema::create('admin_financial_management_reports', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id');
             $table->string('report_type');
-            $table->string('report_type');
             $table->string('file_url');
             $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable(); // Set the default value to null
         });
-
     }
 
     /**
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('admin_financial_management_reports');
     }
 };
