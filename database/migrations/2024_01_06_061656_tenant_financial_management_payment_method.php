@@ -12,6 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('tenant_financial_management_payment_method', function (Blueprint $table){
+            $table->id();
+            $table->foreignId('tenant_id');
+            $table->string('method_name');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+        });
     }
 
     /**

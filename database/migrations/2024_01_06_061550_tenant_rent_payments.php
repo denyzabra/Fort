@@ -12,6 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('tenant_rent_payments', function (Blueprint $table){
+            $table->id();
+            $table->foreignId('tenant_id');
+            $table->foreignId('lease_id');
+            $table->date('payment_date');
+            $table->integer('amount_paid');
+            $table->string('payment_amount');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+        });
     }
 
     /**

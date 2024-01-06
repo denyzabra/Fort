@@ -12,6 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('pro_manager_property_documents_documents', function (Blueprint $table){
+            $table->id();
+            $table->foreignId('property_id');
+            $table->string('document_type');
+            $table->string('file_url');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+        });
     }
 
     /**

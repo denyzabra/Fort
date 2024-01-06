@@ -12,6 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('admin_communication_tools_inbox_messages', function (Blueprint $table){
+            $table->id();
+            $table->foreignId('sender_id');
+            $table->foreignId('recipient_id');
+            $table->string('subject');
+            $table->text('message');
+            $table->string('status');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+        });
     }
 
     /**

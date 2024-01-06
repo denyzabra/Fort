@@ -12,6 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('admin_communication_tools_notifications', function (Blueprint $table){
+            $table->id();
+            $table->foreignId('user_id');
+            $table->text('message');
+            $table->string('status');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+        });
     }
 
     /**

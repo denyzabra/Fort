@@ -9,31 +9,54 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        //
-        Schema::create('admin_properties', function (Blueprint $table){
-            $table->id();
-            $table->string('name');
-            $table->string('category');
-            $table->string('description');
-            $table->string('location');
-            $table->integer('size');
-            $table->integer('bedrooms');
-            $table->integer('bathrooms');
-            $table->string('status');
-            $table->integer('price');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+    // public function up(): void
+    // {
+    //     // //
+    //     // Schema::create('admin_properties', function (Blueprint $table){
+    //     //     $table->id();
+    //     //     $table->string('name');
+    //     //     $table->string('category');
+    //     //     $table->string('description');
+    //     //     $table->string('location');
+    //     //     $table->integer('size');
+    //     //     $table->integer('bedrooms');
+    //     //     $table->integer('bathrooms');
+    //     //     $table->string('status');
+    //     //     $table->integer('price');
+    //     //     $table->timestamp('created_at');
+    //     //     $table->timestamp('updated_at');
 
-        });
-    }
+    //     // });
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        //
-    }
+    // }
+
+    // /**
+    //  * Reverse the migrations.
+    //  */
+    // public function down(): void
+    // {
+    //     //
+    // }
+    public function up()
+{
+    Schema::create('admin_properties', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->string('category');
+        $table->string('description');
+        $table->string('location');
+        $table->integer('size');
+        $table->integer('bedrooms');
+        $table->integer('bathrooms');
+        $table->string('status');
+        $table->integer('price');
+        $table->timestamps(); // This line is okay
+
+        // Modify this line
+        $table->timestamp('updated_at')->nullable();
+
+        $table->primary('id');
+    });
+}
+
 };

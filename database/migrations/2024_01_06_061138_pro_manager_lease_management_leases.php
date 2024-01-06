@@ -12,6 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('pro_manager_lease_management_leases', function (Blueprint $table){
+            $table->id();
+            $table->foreignId('property_id');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('monthly_rent');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+        });
     }
 
     /**

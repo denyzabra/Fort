@@ -12,6 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('admin_setting_and_security_login_sessions', function (Blueprint $table){
+            $table->id();
+            $table->foreignId('user_id'); //foreign key referencing users table
+            $table->timestamp('login_time');
+            $table->timestamp('logout_time');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+        });
     }
 
     /**

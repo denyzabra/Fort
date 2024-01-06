@@ -12,6 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('pro_manager_properties', function (Blueprint $table){
+            $table->id();
+            $table->string('name');
+            $table->string('type');
+            $table->string('description');
+            $table->text('description');
+            $table->string('location');
+            $table->integer('size');
+            $table->integer('bedrooms');
+            $table->integer('bathrooms');
+            $table->string('status');
+            $table->integer('price');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+        });
     }
 
     /**
