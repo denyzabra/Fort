@@ -1,4 +1,4 @@
-# Fortrigee
+# Fort
 
 Welcome to the Fortrigge repository! This is a Property Management System.
 
@@ -18,13 +18,13 @@ Before you begin, ensure you have the following installed on your machine:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/denyzabra/Fortrigge.git
+    git clone https://github.com/denyzabra/For.git
     ```
 
 2. **Navigate to the project folder:**
 
     ```bash
-    cd Fortrigge
+    cd Fort
     ```
 
 3. **Install PHP dependencies:**
